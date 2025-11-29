@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Admin Login — Barangay UCAB</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">Barangay UCAB - Admin</div>
+    <nav class="main-nav">
+      <a href="index.html">Home</a>
+      <a href="request.html">Request</a>
+      <a href="concerns.html">Concerns</a>
+      <a href="admin-login.html" class="active">Admin</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="panel" style="max-width:420px;margin:24px auto 12px;">
+      <h2>Admin Login</h2>
+      <form id="admin-login" class="form">
+        <label>
+          Username
+          <input type="text" id="admin-username" autocomplete="username" required />
+        </label>
+        <label>
+          Password
+          <input type="password" id="admin-password" autocomplete="current-password" required />
+        </label>
+
+        <div class="form-actions">
+          <button type="submit" class="btn">Sign in</button>
+        </div>
+      </form>
+
+      <p class="muted"></p>
+    </section>
+
+    <!-- NOTICE: admin pages were intentionally removed from this screen.
+         Admin controls are available only after sign-in on the dashboard. -->
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    // Demo credentials (created automatically on first run)
+    // Default admin username/password: barangay_admin / ucab_admin123
+    // You can change them later via createAdminAccount(...) in console or modify script.js default.
+
+    document.getElementById('admin-login').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const u = document.getElementById('admin-username').value.trim();
+      const p = document.getElementById('admin-password').value;
+      if (adminLogin(u, p)) {
+        // Redirect to admin dashboard after successful login
+        location.href = 'admin.html';
+      } else {
+        alert('Invalid credentials. For demo try: barangay_admin / ucab_admin123');
+      }
+    });
+  </script>
+</body>
+</html>

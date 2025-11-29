@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Report Concern — Barangay UCAB</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">Barangay UCAB</div>
+    <nav class="main-nav">
+      <a href="index.html">Home</a>
+      <a href="request.html">Request</a>
+      <a href="concerns.html" class="active">Concerns</a>
+      <a href="admin-login.html">Admin</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="panel">
+      <h2>Report a Concern</h2>
+      <form id="concern-form" class="form">
+        <label>
+          Your name
+          <input type="text" id="concern-name" required />
+        </label>
+
+        <label>
+          Concern details
+          <textarea id="concern-issue" rows="4" required></textarea>
+        </label>
+
+        <div class="form-actions">
+          <button type="submit" class="btn">Submit Concern</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel">
+      <h2>Community Reports</h2>
+      <div id="user-concerns" class="cards"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    document.getElementById('concern-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('concern-name').value.trim();
+      const issue = document.getElementById('concern-issue').value.trim();
+      if (!name || !issue) return alert('Please provide your name and the concern.');
+      addConcern(name, issue);
+      document.getElementById('concern-form').reset();
+    });
+  </script>
+</body>
+</html>
